@@ -98,9 +98,15 @@ const withCookieProvider =
 
     return (
       <CookieContext.Provider value={cookieState}>
-        <Component {...props} />
+        <div id="zen-cc-app-root">
+          {/** Insert cookie control so it's the first element in the DOM tree */}
+          <ThemeProvider theme={{ ...defaultTheme, ...theme }}>
+            <CookieControl {...cookieControl} />
+          </ThemeProvider>
+          <Component {...props} />
+        </div>
+        <div id="zen-cc-modal-root" />
         <ThemeProvider theme={{ ...defaultTheme, ...theme }}>
-          <CookieControl {...cookieControl} />
           <UpdatePreferences {...updatePreferences} />
         </ThemeProvider>
       </CookieContext.Provider>

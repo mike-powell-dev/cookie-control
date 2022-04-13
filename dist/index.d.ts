@@ -93,7 +93,15 @@ declare type CookieProviderProps = {
         };
         containerWidth?: string;
         divideColor?: string;
-        heading?: {
+        focusOutlineColor?: string;
+        h1?: {
+            color?: string;
+            fontFamily?: string;
+            fontSize?: string;
+            fontWeight?: string;
+            lineHeight?: string;
+        };
+        h2?: {
             color?: string;
             fontFamily?: string;
             fontSize?: string;
@@ -119,6 +127,7 @@ declare type CookieProviderProps = {
                 hover?: string;
             };
         };
+        zIndex?: number;
     };
 };
 

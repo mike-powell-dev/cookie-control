@@ -21,7 +21,15 @@ export const defaultTheme: CookieProviderProps['theme'] = {
   },
   containerWidth: '1280px',
   divideColor: '#ddd',
-  heading: {
+  focusOutlineColor: '#4c9aff',
+  h1: {
+    color: '#002033',
+    fontFamily: 'Poppins, Arial, sans-serif',
+    fontSize: '30px',
+    fontWeight: '600',
+    lineHeight: '56px',
+  },
+  h2: {
     color: '#002033',
     fontFamily: 'Poppins, Arial, sans-serif',
     fontSize: '20px',
@@ -47,4 +55,5 @@ export const defaultTheme: CookieProviderProps['theme'] = {
       hover: '#00304d',
     },
   },
+  zIndex: 99999,
 };

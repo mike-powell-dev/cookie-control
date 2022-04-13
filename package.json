@@ -1,6 +1,6 @@
 {
-  "name": "zengenti-cookie-control",
-  "version": "1.0.0",
+  "name": "zengenti-react-cookie-control",
+  "version": "2.0.0",
   "description": "",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",

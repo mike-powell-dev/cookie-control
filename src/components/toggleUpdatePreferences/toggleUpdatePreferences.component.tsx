@@ -13,7 +13,9 @@ const ToggleUpdatePreferences = ({
 
   return !showCookieControl ? (
     <ToggleUpdatePreferencesStyled
+      aria-haspopup="dialog"
       className={className}
+      id="zen-cc-tup"
       onClick={() => toggleShowUpdatePreferences()}
     >
       {label}

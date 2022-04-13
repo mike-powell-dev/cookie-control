@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { visuallyHidden } from '../../theme/patterns/visuallyHidden';
 
 const CloseButtonStyled = styled.button`
   background: transparent;
@@ -7,7 +8,11 @@ const CloseButtonStyled = styled.button`
   height: 40px;
   width: 40px;
 
-  &::before {
+  &:focus {
+    outline: 3px solid ${props => props?.theme?.focusOutlineColor};
+  }
+
+  .close__icon::before {
     color: ${props => props.theme?.iconColor};
     content: '\\2716';
     display: block;
@@ -15,13 +20,8 @@ const CloseButtonStyled = styled.button`
     line-height: 40px;
   }
 
-  span {
-    height: 1px;
-    left: -10000px;
-    overflow: hidden;
-    position: absolute;
-    top: auto;
-    width: 1px;
+  .close__label {
+    ${visuallyHidden}
   }
 `;
 

@@ -1,7 +1,13 @@
 import styled, { css } from 'styled-components';
+import { visuallyHidden } from '../../theme/patterns/visuallyHidden';
 
 const CookieControlStyled = styled.div`
   ${({ theme }) => css`
+    *:focus {
+      outline: transparent;
+      box-shadow: ${theme?.focusOutlineColor} 0px 0px 0px 3px;
+    }
+
     background: ${theme?.background};
     bottom: 0;
     box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.4);
@@ -12,6 +18,7 @@ const CookieControlStyled = styled.div`
     padding: 16px;
     position: fixed;
     right: 0;
+    z-index: ${theme?.zIndex};
 
     .zen-cc-cc__inner {
       margin: auto;
@@ -52,10 +59,16 @@ const CookieControlStyled = styled.div`
       margin: 8px -16px 0 -16px;
       display: flex;
       flex-wrap: wrap;
+      border: none;
+      padding: 0;
 
       .zen-cc-toggle {
         margin: 16px 16px 0 16px;
       }
+    }
+
+    .zen-cc-cc__legend {
+      ${visuallyHidden}
     }
 
     .zen-cc-cc__buttons {

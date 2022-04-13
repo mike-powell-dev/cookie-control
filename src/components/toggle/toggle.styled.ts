@@ -1,19 +1,15 @@
 import styled, { css } from 'styled-components';
+import { visuallyHidden } from '../../theme/patterns/visuallyHidden';
 
 const ToggleStyled = styled.span`
   ${({ theme }) => css`
     display: inline-block;
     min-height: 24px;
     position: relative;
+    left: -4px;
 
     input {
-      height: 1px;
-      left: -10000px;
-      margin: -1px;
-      opacity: 0;
-      overflow: hidden;
-      position: absolute;
-      width: 1px;
+      ${visuallyHidden}
     }
 
     label {
@@ -21,7 +17,7 @@ const ToggleStyled = styled.span`
       display: block;
       font-size: 16px;
       line-height: 24px;
-      padding-left: 48px;
+      padding: 4px 4px 4px 52px;
 
       &::before,
       &::after {
@@ -36,7 +32,7 @@ const ToggleStyled = styled.span`
         border-radius: 20px;
         box-shadow: rgba(0, 0, 0, 0.5) 1px 1px 3px 0 inset;
         height: 24px;
-        left: 0;
+        left: 4px;
         outline: 2px solid transparent;
         transition: all 250ms ease-in-out;
         width: 40px;
@@ -47,7 +43,7 @@ const ToggleStyled = styled.span`
         border-radius: 50%;
         box-shadow: rgba(0, 0, 0, 0.9) 1px 1px 3px 0;
         height: 16px;
-        left: 4px;
+        left: 8px;
         transition: left 200ms ease-in-out;
         width: 16px;
       }
@@ -58,7 +54,7 @@ const ToggleStyled = styled.span`
         background: ${theme?.toggle?.on?.background};
       }
       label::after {
-        left: 20px;
+        left: 24px;
       }
 
       &:hover {
@@ -76,7 +72,8 @@ const ToggleStyled = styled.span`
     }
 
     input:focus + label {
-      text-decoration: underline;
+      outline: transparent;
+      box-shadow: ${theme?.focusOutlineColor} 0px 0px 0px 3px;
     }
   `}
 `;

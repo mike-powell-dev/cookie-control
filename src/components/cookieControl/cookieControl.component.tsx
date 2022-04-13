@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useRef } from 'react';
 import CookieControlStyled from './cookieControl.styled';
 import { CookieControlProps } from './cookieControl.type';
 import { useCookieControl } from '../../utils/hooks/useCookieControl';
@@ -21,6 +21,8 @@ const CookieControl = ({ content }: CookieControlProps) => {
     updatePreferences,
   } = useCookieControl();
 
+  const cookieControlRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (showCookieControl) {
       setAnalytics(defaultCookiePreferences.analytics);
@@ -30,8 +32,14 @@ const CookieControl = ({ content }: CookieControlProps) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [showCookieControl]);
 
+  useEffect(() => {
+    if (cookieControlRef.current) {
+      document.getElementById('cc-marketing')?.focus();
+    }
+  }, [cookieControlRef.current]);
+
   return showCookieControl ? (
-    <CookieControlStyled className="zen-cc-cc">
+    <CookieControlStyled className="zen-cc-cc" ref={cookieControlRef}>
       <div className="zen-cc-cc__inner">
         <div className="zen-cc-cc__close">
           <CloseButton onClick={() => updatePreferences()} />
@@ -44,7 +52,10 @@ const CookieControl = ({ content }: CookieControlProps) => {
                 dangerouslySetInnerHTML={{ __html: content }}
               />
             )}
-            <div className="zen-cc-cc__toggles">
+            <fieldset className="zen-cc-cc__toggles">
+              <legend className="zen-cc-cc__legend">
+                Set cookie preferences
+              </legend>
               <Toggle
                 id="cc-marketing"
                 isChecked={marketing}
@@ -63,7 +74,7 @@ const CookieControl = ({ content }: CookieControlProps) => {
                 label="Analytics"
                 onClick={() => setAnalytics(s => !s)}
               />
-            </div>
+            </fieldset>
           </div>
           <div className="zen-cc-cc__buttons">
             <div className="zen-cc-cc__button-wrap">
